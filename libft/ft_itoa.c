@@ -6,12 +6,11 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 08:34:34 by ncatrien          #+#    #+#             */
-/*   Updated: 2020/11/24 00:32:56 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/12 08:16:16 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static	int		number_len(int n)
 {

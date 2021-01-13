@@ -1,4 +1,4 @@
-SRCS = ft_printf.c ft_print_types.c
+SRCS = srcs/ft_printf.c srcs/printf_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -15,7 +15,6 @@ NAME = libftprintf.a
 
 $(NAME): $(OBJS) compile_libft
 	ar rcs $(NAME) $(OBJS)
-
 
 compile_libft:
 	$(MAKE) -C libft

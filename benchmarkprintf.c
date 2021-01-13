@@ -6,13 +6,13 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 13:05:06 by ncatrien          #+#    #+#             */
-/*   Updated: 2020/12/15 14:22:24 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/13 08:59:08 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
-#include "ft_printf.h"
+#include "include/ft_printf.h"
 
 #ifndef OUTPUT_STREAM
 # define OUTPUT_STREAM	stdout 
@@ -98,5 +98,5 @@ void	test_no_conversion(void)
 
 int main(void)
 {
-	test_d_flags(12);
+	printf("test percent: |%3d|\n", 8);
 }

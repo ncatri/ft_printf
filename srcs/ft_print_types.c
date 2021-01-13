@@ -6,14 +6,12 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 14:04:44 by ncatrien          #+#    #+#             */
-/*   Updated: 2020/12/15 12:53:02 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/12 13:26:49 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
-
-#include <stdio.h>
+#include "../libft/libft.h"
 
 int	print_int(int n)
 {
