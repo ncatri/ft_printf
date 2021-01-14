@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:32:13 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/13 16:59:12 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/14 09:52:08 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ typedef	struct	s_format
 
 int				ft_printf(const char *format, ...);
 int				parser(const char *str, va_list args, int *i_ptr);
-void			format_init(t_format *flags);
 void			modifier(t_format *f, char c);
 int				dispatcher(char c, t_format *f, va_list ap);
+
+void			format_init(t_format *flags);
+int				padding(char c, int n);
+
+int				print_char(t_format *f, char c);
 
 #endif

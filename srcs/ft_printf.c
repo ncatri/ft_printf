@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:00:38 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/13 17:09:30 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/14 09:51:20 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ void	modifier(t_format *f, char c)
 
 }
 
+int		dispatcher(char conv, t_format *f, va_list ap)
+{
+	if (conv == 'c')
+		return (print_char(f, va_arg(ap, int)));
+	else
+		return (-1);
+}
+
 int	parser(const char *str, va_list ap, int *i_ptr)
 {
 	int			i;
@@ -36,8 +44,8 @@ int	parser(const char *str, va_list ap, int *i_ptr)
 	{
 		if (ft_strchr("cspdiuxX%", str[i]))
 		{
-//			ret += dispatcher(str[i], &mold, ap);
-			(void)ap;
+			ret += dispatcher(str[i], &mold, ap);
+			(*i_ptr)++;
 			break;
 		}
 		else if (ft_strchr(FLAGS, str[i]))

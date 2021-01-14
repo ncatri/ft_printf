@@ -1,4 +1,4 @@
-SRCS = srcs/ft_printf.c srcs/printf_utils.c
+SRCS = srcs/ft_printf.c srcs/printf_utils.c srcs/ft_print_types.c
 
 OBJS = $(SRCS:.c=.o)
 

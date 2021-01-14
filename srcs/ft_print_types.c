@@ -6,18 +6,22 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 14:04:44 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/12 13:26:49 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/14 08:46:20 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "../libft/libft.h"
+#include "../include/ft_printf.h"
 
-int	print_int(int n)
+int print_char(t_format *f, char c)
 {
-	int counter;
+	int ret;
 
-	counter = 0;
-	ft_putnbr_printf(n, &counter);
-	return (counter);
+	ret = 0;
+	if (f->field)
+	{
+		ret += padding(' ', f->field - 1);
+	}
+	ft_putchar_fd(c, 1);
+	ret++;
+	return (ret);
 }
