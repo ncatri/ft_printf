@@ -6,22 +6,38 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 14:04:44 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/14 08:46:20 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/14 15:42:00 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int print_char(t_format *f, char c)
+void	print_char(t_format *f, va_list ap)
 {
-	int ret;
+	int		pad;
+	char	c;
 
-	ret = 0;
-	if (f->field)
+	if (f->star)
+		f->width = va_arg(ap, int);
+	c = (char)va_arg(ap, int);
+	pad = f->width - 1;
+	if (f->width)
 	{
-		ret += padding(' ', f->field - 1);
+		if (!f->minus)
+		{
+			padding(' ', pad);
+			ft_putchar_fd(c, 1);
+		}
+		else
+		{
+			ft_putchar_fd(c, 1);
+			padding(' ', pad);
+		}
+		f->nprinted += pad + 1;
 	}
-	ft_putchar_fd(c, 1);
-	ret++;
-	return (ret);
+	else
+	{
+		ft_putchar_fd(c, 1);
+		f->nprinted += 1;
+	}
 }

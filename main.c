@@ -4,6 +4,8 @@
 int main(void)
 {
 	int ret = 0;
-	ret = ft_printf("|abc|");
+	ret = ft_printf("|abc%*c|", -2, 'x');
+	printf("ret: %d\n", ret);
+	ret = printf("|abc%*c|", -2, 'x');
 	printf("ret: %d\n", ret);
 }
