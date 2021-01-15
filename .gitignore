@@ -1,2 +1,5 @@
 *.swp
 */*.swp
+pft/
+a.out
+a.out.d*

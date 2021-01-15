@@ -6,41 +6,18 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:00:38 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/14 15:42:05 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 11:15:01 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void	modifier(t_format *f, char c)
-{
-	if (c == '-')
-		f->minus = 1;
-	else if (c == '.')
-		f->point = 1;
-	else if (c == '*')
-		f->star = 1;
-	else if (c != '0' && ft_isdigit(c) && !f->point)
-	{
-		f->width = ft_atoi(&(f->format[f->pos]));
-		f->pos += (number_len(f->width) - 1);
-	}
-	else if (c != '0' && ft_isdigit(c) && f->point)
-	{
-		f->precision = ft_atoi(&(f->format[f->pos]));
-		f->pos += (number_len(f->width) - 1);
-	}
-	else if (c == '0' && !f->point)
-		f->zero = 1;
-	else if (c == '*')
-		f->star = 1;
-
-}
-
 void	dispatcher(t_format *f, va_list ap)
 {
 	if (f->format[f->pos] == 'c')
 		print_char(f, ap);
+	else if (f->format[f->pos] == 's')
+		print_string(f, ap);
 }
 
 void	flag_parser(t_format *f, va_list ap)
@@ -56,9 +33,8 @@ void	flag_parser(t_format *f, va_list ap)
 		}
 		else if (ft_strchr(FLAGS, f->format[f->pos]))
 		{
-			modifier(f, f->format[f->pos]);
+			modifiers(f, ap);
 		}
-		(f->pos)++;
 	}
 }
 

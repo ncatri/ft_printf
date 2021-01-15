@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 12:55:14 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/14 14:17:12 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/15 16:40:22 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,18 @@ int		number_len(int n)
 	while (n/= 10)
 		i++;
 	return (i);
+}
+
+int		putstr_n(char *str, int n)
+{
+	int ret;
+
+	ret = 0;
+	while (*str && n--)
+	{
+		ft_putchar_fd(*str, 1);
+		str++;
+		ret++;
+	}
+	return (ret);
 }

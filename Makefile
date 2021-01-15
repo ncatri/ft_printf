@@ -1,4 +1,4 @@
-SRCS = srcs/ft_printf.c srcs/printf_utils.c srcs/ft_print_types.c
+SRCS = srcs/ft_printf.c srcs/printf_utils.c srcs/ft_print_types.c srcs/modifiers.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -11,7 +11,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) -I./libft $< -o $@
+	$(CC) -c -g $(CFLAGS) -I./libft $< -o $@
 
 $(NAME): $(OBJS) compile_libft
 	ar rcs $(NAME) $(OBJS)
