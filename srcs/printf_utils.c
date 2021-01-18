@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 12:55:14 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/15 16:40:22 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/18 09:40:44 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	format_zero(t_format *f)
 {
 	f->width = 0;
 	f->precision = 0;
+	f->neg_precision_str = 0;
 
 	f->minus = 0;
 	f->zero = 0;

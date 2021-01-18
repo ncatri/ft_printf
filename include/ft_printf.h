@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:32:13 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/15 16:40:17 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/18 09:40:40 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef	struct	s_format
 
 	int			width; //numbers before '.'
 	int			precision; //numbers after '.'
+	int			neg_precision_str;
 
 	int			minus;
 	int			zero;

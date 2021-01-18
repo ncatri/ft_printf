@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 08:48:20 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/15 16:40:42 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/18 09:37:16 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,19 @@ void	precision(t_format *f, va_list ap)
 	{
 		f->point = 1;
 		(f->pos)++;
+		if (f->format[f->pos] == '0')
+			(f->pos)++;
 		if (ft_isdigit(f->format[f->pos]))
 		{
 			f->precision= ft_atoi(&f->format[f->pos]);
-			f->pos += number_len(f->width);
+			f->pos += number_len(f->precision);
 		}
 		else if (f->format[f->pos] == '*')
 		{
 			p = va_arg(ap, int);
 			if (p < 0)
 			{
+				f->neg_precision_str = 1;
 				f->precision = -p;
 			}
 			else

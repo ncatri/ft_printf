@@ -6,14 +6,14 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 NAME = libftprintf.a
 
 %.o: %.c
-	$(CC) -c -g $(CFLAGS) -I./libft $< -o $@
+	$(CC) -c $(CFLAGS) -I./libft $< -o $@
 
-$(NAME): $(OBJS) compile_libft
+$(NAME): $(OBJS) compile_libft 
 	ar rcs $(NAME) $(OBJS)
 
 compile_libft:
