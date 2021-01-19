@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:00:38 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/15 11:15:01 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/18 10:05:37 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	dispatcher(t_format *f, va_list ap)
 		print_char(f, ap);
 	else if (f->format[f->pos] == 's')
 		print_string(f, ap);
+	else if (f->format[f->pos] == 'd' || f->format[f->pos] == 'i')
+		print_int(f, ap);
 }
 
 void	flag_parser(t_format *f, va_list ap)

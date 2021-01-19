@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:32:13 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/18 09:40:40 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/18 15:22:04 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef	struct	s_format
 	int			width; //numbers before '.'
 	int			precision; //numbers after '.'
 	int			neg_precision_str;
+	int			negative;
 
 	int			minus;
 	int			zero;
@@ -54,5 +55,9 @@ int				putstr_n(char *str, int n);
 
 void			print_char(t_format *f, va_list ap);
 void			print_string(t_format *f, va_list ap);
+
+void			print_int(t_format *f, va_list ap);
+void			left_justify(t_format *f, char *val, int len);
+void			right_justify(t_format *f, char *val, int len);
 
 #endif

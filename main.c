@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "include/ft_printf.h"
 
-#define TEST " %.09s ", "hi low" 
+#define TEST "|%3.5d|",-1 
 
 int main(void)
 {
