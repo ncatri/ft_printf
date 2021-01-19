@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 10:00:05 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/18 10:00:12 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/19 16:04:58 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	print_char(t_format *f, va_list ap)
 	int		pad;
 	char	c;
 
-	c = (char)va_arg(ap, int);
+	if (f->format[f->pos] == '%')
+		c = '%';
+	else
+		c = (char)va_arg(ap, int);
 	pad = f->width - 1;
 	if (f->width)
 	{

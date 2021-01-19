@@ -2,7 +2,7 @@
 #include "include/ft_printf.h"
 #include <limits.h>
 
-#define TEST "|%0*d|", 10, INT_MIN 
+#define TEST "|%10x|", -1
 
 int main(void)
 {

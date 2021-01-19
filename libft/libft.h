@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 04:03:17 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/12 09:11:30 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/19 13:45:31 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_putnbr_printf(long long n, int *count);
 char			*ft_itoa_base(int n, char *base);
+char			*ft_ulltoa_base(unsigned long long n, char *base);
 
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **alst, t_list *new);
