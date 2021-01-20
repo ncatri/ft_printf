@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 09:19:46 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 14:21:33 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 14:41:06 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	format_zero(t_format *f)
 	f->plus = 0;
 	f->precision = 0;
 	f->neg_precision = 0;
-	f->negative = 0;
+	f->sign = 0;
+	f->sign_symb = 0;
 }
 
 int		padding(char c, int n)

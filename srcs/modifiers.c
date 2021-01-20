@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 08:48:20 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 14:25:04 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 14:58:37 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	flags(t_format *f)
 		else if (f->format[f->pos] == ' ')
 			f->space = 1;
 		else if (f->format[f->pos] == '+')
-			f->plus = 1;
+			f->sign = 1;
 		(f->pos)++;
 	}
 }

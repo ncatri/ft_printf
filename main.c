@@ -2,7 +2,7 @@
 #include "include/ft_printf.h"
 #include <limits.h>
 
-#define TEST "%08.*d", -3, 12345
+#define TEST "% *.5i", 4, 42
 
 int main(void)
 {

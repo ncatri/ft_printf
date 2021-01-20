@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 09:24:22 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 12:22:48 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 16:06:05 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,17 @@ char	*flag_check(t_format *f, char *val0, int d)
 
 	if (val0[0] == '-')
 	{
-		f->negative = 1;
+		sign_changer(f, 1, '-');
 		val = val0 + 1;
 	}
 	else
+	{
 		val = val0;
+		if (f->space)
+			sign_changer(f, 1, ' ');
+		else
+			f->sign_symb = '+';
+	}
 	if (f->neg_precision)
 	{
 		f->precision = 0;
@@ -33,6 +39,12 @@ char	*flag_check(t_format *f, char *val0, int d)
 	return (val);
 }
 
+void	sign_changer(t_format *f, int sign, char symb)
+{
+	f->sign = sign;
+	f->sign_symb = symb;
+}
+
 void	left_justify(t_format *f, char *val, int len)
 {
 	int pad_prec;
@@ -41,9 +53,9 @@ void	left_justify(t_format *f, char *val, int len)
 	pad_prec = f->precision - len;
 	if (!f->point || pad_prec < 0)
 		pad_prec = 0;
-	if (f->negative)
-		f->nprinted += write(1, "-", 1);
-	pad_width = f->width - len - pad_prec - f->negative;
+	if (f->sign)
+		f->nprinted += putchar_pf(f->sign_symb);
+	pad_width = f->width - len - pad_prec - f->sign;
 	f->nprinted += padding('0', pad_prec);
 	f->nprinted += putstr_n(val, len);
 	f->nprinted += padding(' ', pad_width);
@@ -57,42 +69,17 @@ void	right_justify(t_format *f, char *val, int len)
 	pad_prec = f->precision - len;
 	if (!f->point || pad_prec < 0)
 		pad_prec = 0;
-	pad_width = f->width - len - pad_prec - f->negative;
+	pad_width = f->width - len - pad_prec - f->sign;
 	if (!f->zero || (f->zero && f->point))
 	{
 		f->nprinted += padding(' ', pad_width);
-		if (f->negative)
-			f->nprinted += write(1, "-", 1);
+		if (f->sign)
+			f->nprinted += putchar_pf(f->sign_symb);
 	}
 	else
 	{
-		if (f->negative)
-			f->nprinted += write(1, "-", 1);
-		f->nprinted += padding('0', pad_width);
-	}
-	f->nprinted += padding('0', pad_prec);
-	f->nprinted += putstr_n(val, len);
-}
-
-void	right_justify_u(t_format *f, char *val, int len)
-{
-	int pad_prec;
-	int pad_width;
-
-	pad_prec = f->precision - len;
-	if (!f->point || pad_prec < 0)
-		pad_prec = 0;
-	pad_width = f->width - len - pad_prec - f->negative;
-	if (!f->zero || (f->zero && f->point))
-	{
-		f->nprinted += padding(' ', pad_width);
-		if (f->negative)
-			f->nprinted += write(1, "-", 1);
-	}
-	else
-	{
-		if (f->negative)
-			f->nprinted += write(1, "-", 1);
+		if (f->sign)
+			f->nprinted += putchar_pf(f->sign_symb);
 		f->nprinted += padding('0', pad_width);
 	}
 	f->nprinted += padding('0', pad_prec);

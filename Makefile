@@ -1,5 +1,6 @@
 SRCS = srcs/ft_printf.c \
 	   srcs/utils.c \
+	   srcs/utils2.c \
 	   srcs/utils_flags.c \
 	   srcs/utils_int.c \
 	   srcs/print_char_str.c \

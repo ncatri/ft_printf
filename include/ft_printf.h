@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:32:13 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 14:22:46 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 16:02:14 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef	struct	s_format
 	int			width;
 	int			precision;
 	int			neg_precision;
-	int			negative;
+	int			sign;
+	char		sign_symb;
 
 }				t_format;
 
@@ -59,6 +60,8 @@ int				padding(char c, int n);
 int				number_len(int n);
 int				putstr_n(char *str, int n);
 
+int				putchar_pf(char c);
+
 void			print_char(t_format *f, va_list ap);
 void			print_string(t_format *f, va_list ap);
 void			print_percent(t_format *f);
@@ -71,7 +74,7 @@ void			print_octal(t_format *f, va_list ap);
 char			*flag_check(t_format *f, char *val0, int d);
 void			left_justify(t_format *f, char *val, int len);
 void			right_justify(t_format *f, char *val, int len);
-void			right_justify_u(t_format *f, char *val, int len);
+void			sign_changer(t_format *f, int sign, char symb);
 
 void			print_pointer(t_format *f, va_list ap);
 void			print_pointer2(t_format *f, char *val);
