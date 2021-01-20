@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 10:00:05 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/19 16:04:58 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 07:40:54 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ void	print_char(t_format *f, va_list ap)
 	int		pad;
 	char	c;
 
-	if (f->format[f->pos] == '%')
-		c = '%';
-	else
-		c = (char)va_arg(ap, int);
+	c = (char)va_arg(ap, int);
 	pad = f->width - 1;
 	if (f->width)
 	{
@@ -57,19 +54,38 @@ void	print_string(t_format *f, va_list ap)
 		len = ft_strlen(str);
 	else
 		len = f->precision;
-	if (f->width)
+	if (f->width && !f->minus)
 	{
-		if (!f->minus)
-		{
-			f->nprinted += padding(' ', f->width - len);
-			f->nprinted += putstr_n(str, len);
-		}
-		else
-		{
-			f->nprinted += putstr_n(str, len);
-			f->nprinted += padding(' ', f->width - len);
-		}
+		f->nprinted += padding(' ', f->width - len);
+		f->nprinted += putstr_n(str, len);
+	}
+	else if (f->width && f->minus)
+	{
+		f->nprinted += putstr_n(str, len);
+		f->nprinted += padding(' ', f->width - len);
 	}
 	else
 		f->nprinted += putstr_n(str, len);
+}
+
+void	print_percent(t_format *f)
+{
+	int	pad;
+
+	pad = f->width - 1;
+	if (f->width && !f->minus)
+	{
+		if (f->zero)
+			f->nprinted += padding('0', pad);
+		else
+			f->nprinted += padding(' ', pad);
+		f->nprinted += write(1, "%", 1);
+	}
+	else if (f->width && f->minus)
+	{
+		f->nprinted += write(1, "%", 1);
+		f->nprinted += padding(' ', pad);
+	}
+	else
+		f->nprinted += write(1, "%", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:32:13 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/19 15:15:21 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 09:12:40 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ int				putstr_n(char *str, int n);
 
 void			print_char(t_format *f, va_list ap);
 void			print_string(t_format *f, va_list ap);
+void			print_percent(t_format *f);
 
 void			print_int(t_format *f, va_list ap);
+char			*flag_check(t_format *f, char *val0, int d);
 void			print_uint(t_format *f, va_list ap);
 void			print_hexa(t_format *f, va_list ap);
 void			left_justify(t_format *f, char *val, int len);

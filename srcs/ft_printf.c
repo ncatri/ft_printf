@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:00:38 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/19 15:46:13 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 07:33:44 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	dispatcher(t_format *f, va_list ap)
 {
-	if (f->format[f->pos] == 'c' || f->format[f->pos] == '%')
+	if (f->format[f->pos] == 'c' )
 		print_char(f, ap);
+	else if (f->format[f->pos] == '%')
+		print_percent(f);
 	else if (f->format[f->pos] == 's')
 		print_string(f, ap);
 	else if (f->format[f->pos] == 'd' || f->format[f->pos] == 'i')

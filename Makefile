@@ -1,5 +1,10 @@
-SRCS = srcs/ft_printf.c srcs/printf_utils.c srcs/print_char_str.c srcs/modifiers.c \
-	   srcs/print_u_int.c srcs/print_pointer.c
+SRCS = srcs/ft_printf.c \
+	   srcs/utils.c \
+	   srcs/utils_int.c \
+	   srcs/print_char_str.c \
+	   srcs/modifiers.c \
+	   srcs/print_u_int.c \
+	   srcs/print_pointer.c
 
 OBJS = $(SRCS:.c=.o)
 
