@@ -2,7 +2,7 @@
 #include "include/ft_printf.h"
 #include <limits.h>
 
-#define TEST "%*.*u", 5, -7, 10 
+#define TEST "%.*o", -3, 12345
 
 int main(void)
 {

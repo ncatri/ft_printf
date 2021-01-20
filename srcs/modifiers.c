@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 08:48:20 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 08:48:44 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 13:35:57 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	flags(t_format *f)
 void	width(t_format *f, va_list ap)
 {
 	int w;
-	
+
 	if (ft_isdigit(f->format[f->pos]))
 	{
 		f->width = ft_atoi(&f->format[f->pos]);
@@ -66,7 +66,7 @@ void	precision(t_format *f, va_list ap)
 			(f->pos)++;
 		if (ft_isdigit(f->format[f->pos]))
 		{
-			f->precision= ft_atoi(&f->format[f->pos]);
+			f->precision = ft_atoi(&f->format[f->pos]);
 			f->pos += number_len(f->precision);
 		}
 		else if (f->format[f->pos] == '*')
@@ -74,7 +74,7 @@ void	precision(t_format *f, va_list ap)
 			p = va_arg(ap, int);
 			if (p < 0)
 			{
-				f->neg_precision_str = 1;
+				f->neg_precision = 1;
 				f->precision = -p;
 			}
 			else

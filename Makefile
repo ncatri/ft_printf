@@ -16,10 +16,12 @@ CFLAGS = -Wall -Wextra -Werror -g3
 
 NAME = libftprintf.a
 
+INCLUDE = include/ft_printf.h
+
 %.o: %.c
 	$(CC) -c $(CFLAGS) -I./libft $< -o $@
 
-$(NAME): $(OBJS) compile_libft 
+$(NAME): $(OBJS) compile_libft $(INCLUDE) 
 	ar rcs $(NAME) $(OBJS)
 
 compile_libft:

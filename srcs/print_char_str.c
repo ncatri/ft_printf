@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 10:00:05 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 07:40:54 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 10:37:44 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print_string(t_format *f, va_list ap)
 	str = va_arg(ap, char*);
 	if (!str)
 		str = "(null)";
-	if (f->neg_precision_str)
+	if (f->neg_precision)
 		f->point = 0;
 	if (!f->point || (f->point && (size_t)f->precision >= ft_strlen(str)))
 		len = ft_strlen(str);

@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:00:38 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 07:33:44 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 13:32:10 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	dispatcher(t_format *f, va_list ap)
 {
-	if (f->format[f->pos] == 'c' )
+	if (f->format[f->pos] == 'c')
 		print_char(f, ap);
 	else if (f->format[f->pos] == '%')
 		print_percent(f);
@@ -28,6 +28,8 @@ void	dispatcher(t_format *f, va_list ap)
 		print_uint(f, ap);
 	else if (f->format[f->pos] == 'x' || f->format[f->pos] == 'X')
 		print_hexa(f, ap);
+	else if (f->format[f->pos] == 'o')
+		print_octal(f, ap);
 }
 
 void	flag_parser(t_format *f, va_list ap)
@@ -36,10 +38,10 @@ void	flag_parser(t_format *f, va_list ap)
 	(f->pos)++;
 	while (ft_strchr(ALLSYMBS, f->format[f->pos]))
 	{
-		if (ft_strchr("cspdiuxX%", f->format[f->pos]))
+		if (ft_strchr("cspdiuxXo%", f->format[f->pos]))
 		{
 			dispatcher(f, ap);
-			break;
+			break ;
 		}
 		else if (ft_strchr(FLAGS, f->format[f->pos]))
 		{
@@ -70,9 +72,7 @@ int		ft_printf(const char *format, ...)
 
 	va_start(ap, format);
 	format_init(&f, format);
-
 	fmt_parser(&f, ap);
-
 	va_end(ap);
 	return (f.nprinted);
 }

@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 09:24:22 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 09:25:06 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 12:22:48 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*flag_check(t_format *f, char *val0, int d)
 	}
 	else
 		val = val0;
-	if (f->neg_precision_str)
+	if (f->neg_precision)
 	{
 		f->precision = 0;
 		f->point = 0;
@@ -50,6 +50,31 @@ void	left_justify(t_format *f, char *val, int len)
 }
 
 void	right_justify(t_format *f, char *val, int len)
+{
+	int pad_prec;
+	int pad_width;
+
+	pad_prec = f->precision - len;
+	if (!f->point || pad_prec < 0)
+		pad_prec = 0;
+	pad_width = f->width - len - pad_prec - f->negative;
+	if (!f->zero || (f->zero && f->point))
+	{
+		f->nprinted += padding(' ', pad_width);
+		if (f->negative)
+			f->nprinted += write(1, "-", 1);
+	}
+	else
+	{
+		if (f->negative)
+			f->nprinted += write(1, "-", 1);
+		f->nprinted += padding('0', pad_width);
+	}
+	f->nprinted += padding('0', pad_prec);
+	f->nprinted += putstr_n(val, len);
+}
+
+void	right_justify_u(t_format *f, char *val, int len)
 {
 	int pad_prec;
 	int pad_width;

@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 09:19:46 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 09:19:52 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 13:33:46 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	format_init(t_format *f, const char *fmt)
 {
 	f->format = fmt;
 	f->pos = 0;
-
 	f->nprinted = 0;
 }
 
@@ -24,13 +23,11 @@ void	format_zero(t_format *f)
 {
 	f->width = 0;
 	f->precision = 0;
-	f->neg_precision_str = 0;
+	f->neg_precision = 0;
 	f->negative = 0;
-
 	f->minus = 0;
 	f->zero = 0;
 	f->point = 0;
-	f->star = 0;
 }
 
 int		padding(char c, int n)
@@ -53,7 +50,7 @@ int		number_len(int n)
 	int i;
 
 	i = 1;
-	while (n/= 10)
+	while (n /= 10)
 		i++;
 	return (i);
 }
