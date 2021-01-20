@@ -1,5 +1,6 @@
 SRCS = srcs/ft_printf.c \
 	   srcs/utils.c \
+	   srcs/utils_flags.c \
 	   srcs/utils_int.c \
 	   srcs/print_char_str.c \
 	   srcs/modifiers.c \
@@ -45,4 +46,4 @@ fclean: clean libft_fclean
 
 re: fclean all 
 
-.PHONY: LIBFT libft_clean libft_fclean clean fclean all
+.PHONY: LIBFT libft_clean libft_fclean clean fclean all re

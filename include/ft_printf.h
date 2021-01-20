@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:32:13 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 13:32:57 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/20 14:22:46 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 
-# define FLAGS "-0.*123456789"
-# define ALLSYMBS "-0.*123456789cspdiuxXo%"
+# define FLAGS "-0.* +#123456789"
+# define ALLSYMBS "-0.* +#123456789cspdiuxXo%"
 
 typedef	struct	s_format
 {
@@ -26,14 +26,18 @@ typedef	struct	s_format
 
 	int			nprinted;
 
-	int			width; //numbers before '.'
-	int			precision; //numbers after '.'
-	int			neg_precision;
-	int			negative;
-
 	int			minus;
 	int			zero;
 	int			point;
+	int			hashtag;
+	int			space;
+	int			plus;
+
+	int			width;
+	int			precision;
+	int			neg_precision;
+	int			negative;
+
 }				t_format;
 
 int				ft_printf(const char *format, ...);
@@ -45,6 +49,9 @@ void			modifiers(t_format *f, va_list ap);
 void			flags(t_format *f);
 void			width(t_format *f, va_list ap);
 void			precision(t_format *f, va_list ap);
+
+void			ifpoint(t_format *f);
+void			ifstar(t_format *f, va_list ap);
 
 void			format_init(t_format *flags, const char *format);
 void			format_zero(t_format *flags);
@@ -68,7 +75,5 @@ void			right_justify_u(t_format *f, char *val, int len);
 
 void			print_pointer(t_format *f, va_list ap);
 void			print_pointer2(t_format *f, char *val);
-
-
 
 #endif
