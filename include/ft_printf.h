@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:32:13 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 16:02:14 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/21 08:08:41 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ typedef	struct	s_format
 
 }				t_format;
 
-int				ft_printf(const char *format, ...);
+int				ft_printf(const char *format,\
+				...) __attribute__((format(printf,1,2)));
 void			fmt_parser(t_format *f, va_list ap);
 void			flag_parser(t_format *f, va_list ap);
 void			dispatcher(t_format *f, va_list ap);
