@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:38:02 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/19 13:47:57 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/21 07:41:59 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ char			*ft_ulltoa_base(unsigned long long n, char *base)
 	if (!(str = (char*)malloc(sizeof(char) * (l + 1))))
 		return (NULL);
 	str[l] = '\0';
-	while (n)
-	{
-		str[--l] = base[n % base_len];
-		n /= base_len;
-	}
 	if (n == 0)
 		str[--l] = base[0];
+	else
+	{
+		while (n)
+		{
+			str[--l] = base[n % base_len];
+			n /= base_len;
+		}
+	}
 	return (str);
 }
