@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 10:00:05 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 10:37:44 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/21 09:24:16 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	print_char(t_format *f, va_list ap)
 {
-	int		pad;
-	char	c;
+	int				pad;
+	unsigned char	c;
 
-	c = (char)va_arg(ap, int);
+	c = (unsigned char)va_arg(ap, int);
 	pad = f->width - 1;
 	if (f->width)
 	{

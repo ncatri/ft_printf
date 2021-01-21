@@ -6,7 +6,7 @@
 /*   By: ncatrien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 08:00:38 by ncatrien          #+#    #+#             */
-/*   Updated: 2021/01/20 13:32:10 by ncatrien         ###   ########lyon.fr   */
+/*   Updated: 2021/01/21 13:11:57 by ncatrien         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,20 @@ void	flag_parser(t_format *f, va_list ap)
 {
 	format_zero(f);
 	(f->pos)++;
-	while (ft_strchr(ALLSYMBS, f->format[f->pos]))
+	while (f->format[f->pos] && ft_strchr(ALLSYMBS, f->format[f->pos]))
 	{
 		if (ft_strchr("cspdiuxXo%", f->format[f->pos]))
 		{
 			dispatcher(f, ap);
+			(f->pos)++;
 			break ;
 		}
 		else if (ft_strchr(FLAGS, f->format[f->pos]))
 		{
 			modifiers(f, ap);
 		}
+		else
+			break ;
 	}
 }
 
@@ -58,10 +61,10 @@ void	fmt_parser(t_format *f, va_list ap)
 		{
 			ft_putchar_fd(f->format[f->pos], 1);
 			(f->nprinted)++;
+			(f->pos)++;
 		}
 		else
 			flag_parser(f, ap);
-		(f->pos)++;
 	}
 }
 
