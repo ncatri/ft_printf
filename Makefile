@@ -42,7 +42,6 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean libft_fclean
-	$(RM) libft.a
 	$(RM) $(NAME)
 
 re: fclean all 
